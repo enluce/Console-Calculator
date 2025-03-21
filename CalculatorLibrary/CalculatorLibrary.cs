@@ -5,6 +5,7 @@ namespace CalculatorLibrary
     public class Calculator
     {
         JsonWriter writer;
+        public static int countOfTimesUsed;
         public Calculator()
         {
             StreamWriter logfile = File.CreateText("calculatorlog.json");
@@ -26,6 +27,7 @@ namespace CalculatorLibrary
             writer.WriteValue(num2);
             writer.WritePropertyName("Operation");
             // Use a switch statement to do the math.
+            bool validOperation = true;
             switch (op)
             {
                 case "a":
@@ -50,12 +52,14 @@ namespace CalculatorLibrary
                     break;
                 // Return text for an incorrect option entry.
                 default:
+                    validOperation = false;
                     break;
             }
             writer.WritePropertyName("Result");
             writer.WriteValue(result);
             writer.WriteEndObject();
 
+            if (validOperation) countOfTimesUsed++;
             return result;
         }
 

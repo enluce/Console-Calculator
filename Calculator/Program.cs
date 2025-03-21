@@ -7,6 +7,7 @@ Calculator calculator = new Calculator();
 Console.WriteLine("Console Calculator in C#\r");
 Console.WriteLine("------------------------\n");
 
+
 while (!endApp)
 {
     // Declare variables and set to empty.
@@ -77,4 +78,5 @@ while (!endApp)
     Console.WriteLine("\n"); // Friendly linespacing.
 }
 calculator.Finish();
+Console.WriteLine($"Number of times calculator was used is: {Calculator.countOfTimesUsed}");
 return;
